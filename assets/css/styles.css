@@ -1,0 +1,545 @@
+/* =========================================================
+   Global Theme Variables
+   ========================================================= */
+
+/* Site-wide custom colors */
+:root {
+    --brand-accent: #0d6efd;
+    --brand-accent-hover: #0b5ed7;
+}
+
+/* Light mode Bootstrap variable overrides */
+html[data-bs-theme="light"] {
+    --bs-body-bg: #ffffff;
+    --bs-body-color: #212529;
+    --bs-border-color: #dee2e6;
+    --bs-link-color: var(--brand-accent);
+    --bs-link-hover-color: var(--brand-accent-hover);
+}
+
+/* Dark mode Bootstrap variable overrides */
+html[data-bs-theme="dark"] {
+    --bs-body-bg: #191919;
+    --bs-body-color: #e5e5e5;
+    --bs-border-color: rgba(255, 255, 255, 0.12);
+    --bs-link-color: #6ea8fe;
+    --bs-link-hover-color: #ffffff;
+}
+
+/* Apply the Bootstrap theme variables to the page */
+body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+
+/* =========================================================
+   Navbar
+   ========================================================= */
+
+/* Glass-style sticky navbar background */
+.site-nav {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Dark mode navbar background */
+html[data-bs-theme="dark"] .site-nav {
+    background: rgba(25, 25, 25, 0.72);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Keep nav text consistent with the current theme */
+.site-nav .navbar-brand,
+.site-nav .nav-link {
+    color: inherit;
+}
+
+/* Nav hover and keyboard focus color */
+.site-nav .nav-link:hover,
+.site-nav .nav-link:focus {
+    color: var(--bs-link-hover-color);
+}
+
+/* Current page nav link */
+.site-nav .nav-link.active,
+.site-nav .nav-link[aria-current="page"] {
+    color: var(--bs-link-color);
+    font-weight: 600;
+}
+
+/* Divider between social links and the theme toggle */
+.nav-divider {
+    width: 1px;
+    height: 1.25rem;
+    background-color: var(--bs-border-color);
+    display: inline-block;
+}
+
+/* Mobile hamburger button spacing */
+.navbar-toggler {
+    padding: 0.35rem 0.5rem;
+}
+
+/* Remove Bootstrap's default focus ring from hamburger button */
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+
+/* Override Bootstrap's primary button with custom accent variables */
+.btn-primary {
+    --bs-btn-bg: var(--brand-accent);
+    --bs-btn-border-color: var(--brand-accent);
+    --bs-btn-hover-bg: var(--brand-accent-hover);
+    --bs-btn-hover-border-color: var(--brand-accent-hover);
+    --bs-btn-active-bg: var(--brand-accent-hover);
+    --bs-btn-active-border-color: var(--brand-accent-hover);
+}
+
+/* Neutral button used for secondary actions */
+.btn-neutral {
+    background-color: rgba(0, 0, 0, 0.025);
+    border: 1px solid var(--bs-border-color);
+    color: var(--bs-body-color);
+}
+
+/* Light mode neutral button hover */
+.btn-neutral:hover {
+    background-color: rgba(0, 0, 0, 0.055);
+    border-color: var(--bs-border-color);
+    color: var(--bs-body-color);
+}
+
+/* Dark mode neutral button */
+html[data-bs-theme="dark"] .btn-neutral {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Dark mode neutral button hover */
+html[data-bs-theme="dark"] .btn-neutral:hover {
+    background-color: rgba(255, 255, 255, 0.09);
+    color: var(--bs-body-color);
+}
+
+/* Subtle blue focus ring for neutral buttons */
+.btn-neutral:focus,
+.btn-neutral:focus-visible {
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.10);
+}
+
+
+/* =========================================================
+   Home Page Hero
+   ========================================================= */
+
+/* Circular profile image wrapper */
+.profile-wrap {
+    width: min(180px, 100%);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-inline: auto;
+}
+
+/* Slightly larger profile image on desktop */
+@media (min-width: 992px) {
+    .profile-wrap {
+        width: 220px;
+        margin-inline: 0;
+    }
+}
+
+/* Ensures the profile image fills the circular frame cleanly */
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* =========================================================
+   Projects Page
+   ========================================================= */
+
+/* Makes the entire project card clickable without link styling */
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+/* Project card base style */
+.project-card {
+    border: 1px solid var(--bs-border-color);
+    background-color: rgba(0, 0, 0, 0.025);
+    overflow: hidden;
+    transition: background-color 0.15s ease;
+    height: 100%;
+}
+
+/* Keeps card content stacked vertically */
+.project-card .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Light mode card hover */
+.project-card:hover {
+    background-color: rgba(0, 0, 0, 0.055);
+}
+
+/* Dark mode project card background */
+html[data-bs-theme="dark"] .project-card {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Dark mode card hover */
+html[data-bs-theme="dark"] .project-card:hover {
+    background-color: rgba(255, 255, 255, 0.09);
+}
+
+/* Prevent project card links from changing color on hover */
+.project-card-link:hover {
+    color: inherit;
+}
+
+/* Keeps project thumbnail images consistent */
+.project-card-img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Smaller project summary text */
+.project-card .card-text {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+/* Date and category line */
+.project-meta {
+    font-size: 0.9rem;
+    color: var(--bs-secondary-color);
+}
+
+/* Icons used inside project metadata, such as date and course */
+.project-meta i {
+    color: var(--bs-secondary-color);
+}
+
+/* Project title icon color, set per icon with CSS variables in HTML */
+.project-icon {
+    color: var(--project-icon-color, var(--bs-link-color));
+}
+
+/* Dark mode project title icon color */
+html[data-bs-theme="dark"] .project-icon {
+    color: var(--project-icon-color-dark, var(--project-icon-color, var(--bs-link-color)));
+}
+
+
+/* =========================================================
+   Project Detail Pages
+   ========================================================= */
+
+/* Project detail pages use a fixed navbar so the banner can sit behind it */
+.project-detail-page .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+}
+
+/* Banner image at the top of individual project pages */
+.project-detail-page .project-hero {
+    border-bottom: 1px solid var(--bs-border-color);
+}
+
+/* Controls the project banner size and cropping */
+.project-detail-page .project-hero-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+@media (min-width: 992px) {
+    .project-detail-page .project-hero-img {
+        height: 320px;
+    }
+}
+
+/* Header area for project title, summary, and metadata */
+.project-detail-header {
+    max-width: none;
+}
+
+/* Large colored icon beside the project title */
+.project-detail-icon {
+    color: var(--project-icon-color, var(--bs-link-color));
+    font-size: 2rem;
+    line-height: 1;
+}
+
+html[data-bs-theme="dark"] .project-detail-icon {
+    color: var(--project-icon-color-dark, var(--project-icon-color, var(--bs-link-color)));
+}
+
+/* Adds consistent spacing between major project sections */
+.project-section {
+    margin-top: 3rem;
+}
+
+/* Section headings on project detail pages */
+.project-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--bs-border-color);
+}
+
+/* Section heading icons */
+.project-section h2 i {
+    color: var(--bs-body-color);
+}
+
+/* Slightly reduces section heading icon size */
+.section-heading-icon {
+    font-size: 1.2rem;
+}
+
+/* Keep long text sections full width inside the Bootstrap container */
+.project-section > p {
+    max-width: none;
+}
+
+/* Skill pill layout used on project detail pages */
+.skill-pill {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 999px;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.9rem;
+    background-color: rgba(0, 0, 0, 0.025);
+}
+
+html[data-bs-theme="dark"] .skill-pill {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Link/file cards used for project resources */
+.project-resource-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.025);
+}
+
+/* Light mode resource link hover */
+.project-resource-link:hover {
+    color: inherit;
+    background-color: rgba(0, 0, 0, 0.055);
+}
+
+/* Resource link icons */
+.project-resource-link i {
+    color: var(--bs-body-color);
+    font-size: 1.15rem;
+}
+
+/* Dark mode resource link background */
+html[data-bs-theme="dark"] .project-resource-link {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Dark mode resource link hover */
+html[data-bs-theme="dark"] .project-resource-link:hover {
+    background-color: rgba(255, 255, 255, 0.09);
+}
+
+/* Screenshot/media containers */
+.project-media-card {
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.025);
+}
+
+/* Dark mode screenshot/media containers */
+html[data-bs-theme="dark"] .project-media-card {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Screenshot/media card headings */
+.project-media-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Optional descriptive text inside screenshot/media cards */
+.project-media-card p {
+    font-size: 0.95rem;
+    color: var(--bs-secondary-color);
+    margin-bottom: 1rem;
+}
+
+/* Screenshot/media images */
+.project-media-img {
+    width: 100%;
+    border-radius: 0.35rem;
+    display: block;
+    cursor: zoom-in;
+}
+
+/* Cropped preview for unusually tall screenshots */
+.project-media-preview {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.35rem;
+}
+
+/* Limits tall images while keeping the full image available in the modal */
+.project-media-img-thumb {
+    height: clamp(260px, 24vw, 360px);
+    object-fit: cover;
+    object-position: top;
+}
+
+/* Subtle fade that hints the preview is cropped */
+.project-media-preview::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4rem;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.85));
+}
+
+html[data-bs-theme="dark"] .project-media-preview::after {
+    background: linear-gradient(to bottom, transparent, rgba(25, 25, 25, 0.85));
+}
+
+/* =========================================================
+   Image Modal
+   ========================================================= */
+
+/* Fullscreen image modal used for project screenshots */
+.image-modal .modal-content {
+    min-height: 100vh;
+}
+
+/* Centers the modal image and gives the close button room */
+.image-modal-body {
+    min-height: 100vh;
+    padding: 3rem 1rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Close button fixed in the top-right corner of the modal */
+.image-modal-close {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1060;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 999px;
+    padding: 0.75rem;
+}
+
+/* Default modal image view: fit image to screen height */
+.image-modal-img {
+    max-width: 100%;
+    max-height: calc(100vh - 4rem);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    cursor: zoom-in;
+}
+
+/* Zoomed modal image view */
+.image-modal-img.is-zoomed {
+    max-width: none;
+    max-height: none;
+    width: auto;
+    height: auto;
+    cursor: zoom-out;
+}
+
+/* Allows scrolling when the image is zoomed */
+.image-modal-body.is-zoomed {
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: auto;
+}
+
+/* Keeps zoomed modal images from becoming too extreme on mobile */
+@media (max-width: 767.98px) {
+    .image-modal-img.is-zoomed {
+        max-width: none;
+        width: 175vw;
+        height: auto;
+    }
+}
+
+/* Slightly gentler zoom for tablet-sized screens */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .image-modal-img.is-zoomed {
+        max-width: none;
+        width: 140vw;
+        height: auto;
+    }
+}
+
+/* =========================================================
+   Resume Page
+   ========================================================= */
+
+/* Logo images used in resume cards */
+.resume-logo {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    border-radius: 0.35rem;
+    display: block;
+}
+
+/* Colored icons used inside resume skill/course cards */
+.resume-card-icon {
+    color: var(--project-icon-color, var(--bs-body-color));
+}
+
+html[data-bs-theme="dark"] .resume-card-icon {
+    color: var(--project-icon-color-dark, var(--project-icon-color, var(--bs-body-color)));
+}
+
+/* Keep resume card body text consistent with the rest of the page */
+.resume-page .project-media-card p {
+    color: var(--bs-body-color);
+}
+
+/* Keep resume metadata muted */
+.resume-page .project-media-card .project-meta {
+    color: var(--bs-secondary-color);
+}
