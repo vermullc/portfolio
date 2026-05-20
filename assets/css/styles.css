@@ -34,7 +34,7 @@ body {
 
 
 /* =========================================================
-   Navbar
+   Navbar & Footer
    ========================================================= */
 
 /* Glass-style sticky navbar background */
@@ -86,6 +86,23 @@ html[data-bs-theme="dark"] .site-nav {
 /* Remove Bootstrap's default focus ring from hamburger button */
 .navbar-toggler:focus {
     box-shadow: none;
+}
+
+/* Footer links */
+.footer-link {
+    color: var(--bs-secondary-color);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 0.2em;
+    opacity: 0.9;
+    transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+    color: var(--bs-link-hover-color);
+    opacity: 1;
+    text-decoration-style: solid;
 }
 
 
