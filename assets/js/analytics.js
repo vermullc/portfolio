@@ -1,15 +1,7 @@
-const googleAnalyticsId = "G-7GGPXEKQPG";
+const umamiScript = document.createElement("script");
 
-const googleAnalyticsScript = document.createElement("script");
-googleAnalyticsScript.async = true;
-googleAnalyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`;
-document.head.appendChild(googleAnalyticsScript);
+umamiScript.defer = true;
+umamiScript.src = "https://cloud.umami.is/script.js";
+umamiScript.setAttribute("data-website-id", "d4d80264-ca2b-4835-832d-ee20426b1d5d");
 
-window.dataLayer = window.dataLayer || [];
-
-function gtag() {
-    dataLayer.push(arguments);
-}
-
-gtag("js", new Date());
-gtag("config", googleAnalyticsId);
+document.head.appendChild(umamiScript);
