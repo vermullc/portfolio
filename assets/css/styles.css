@@ -37,18 +37,61 @@ body {
    Navbar & Footer
    ========================================================= */
 
-/* Glass-style sticky navbar background */
+/* Glass-style sticky navbar background, applied via ::before so that
+   child elements (like the mobile menu) aren't nested inside a
+   backdrop-filter ancestor — nesting backdrop-filter breaks blur
+   rendering across Chrome, Safari, and Firefox */
 .site-nav {
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: transparent;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+/* Blur surface for the navbar. Height extends via --collapse-extra
+   (set by JS) to cover the mobile dropdown when it's open, so the
+   top bar and dropdown share one continuous blurred region instead
+   of rendering as two separate, visibly seamed blur regions. */
+.site-nav::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 calc(-1 * var(--collapse-extra, 0px)) 0;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: inset 0.35s ease;
+}
+
 /* Dark mode navbar background */
-html[data-bs-theme="dark"] .site-nav {
+html[data-bs-theme="dark"] .site-nav::before {
     background: rgba(25, 25, 25, 0.72);
+}
+
+/* Dark mode navbar top border */
+html[data-bs-theme="dark"] .site-nav {
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Mobile: make the expanded menu overlay page content instead of
+   pushing it down, matching the overlay behavior on project pages.
+   Background/blur are intentionally omitted here — the shared
+   .site-nav::before surface above now covers this area too. */
+@media (max-width: 991.98px) {
+    .site-nav .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 1031;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .site-nav .navbar-collapse .navbar-nav {
+        padding: 0.5rem 1.5rem;
+    }
+
+    html[data-bs-theme="dark"] .site-nav .navbar-collapse {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
 }
 
 /* Keep nav text consistent with the current theme */
@@ -86,6 +129,54 @@ html[data-bs-theme="dark"] .site-nav {
 /* Remove Bootstrap's default focus ring from hamburger button */
 .navbar-toggler:focus {
     box-shadow: none;
+}
+
+/* Custom hamburger icon that morphs into an X when the mobile
+   menu is expanded. Bootstrap toggles aria-expanded on this
+   button automatically, so no JS is needed here — pure CSS
+   driven off that attribute. */
+.navbar-toggler {
+    width: 26px;
+    height: 22px;
+    position: relative;
+}
+
+.toggler-bar {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--bs-body-color);
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease;
+}
+
+.top-bar {
+    top: 2px;
+}
+
+.middle-bar {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.bottom-bar {
+    bottom: 2px;
+}
+
+/* Expanded state: morph into an X */
+.navbar-toggler[aria-expanded="true"] .top-bar {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.navbar-toggler[aria-expanded="true"] .middle-bar {
+    opacity: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .bottom-bar {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
 }
 
 /* Footer links */
@@ -183,15 +274,27 @@ html[data-bs-theme="dark"] .btn-neutral:hover {
 
 /* Homepage hero typography on smaller screens */
 @media (max-width: 575.98px) {
-
     .hero .eyebrow {
-        font-size: 0.85rem;
+        font-size: clamp(0.78rem, 6vw, 0.85rem);
         line-height: 1.45;
     }
 
     .hero h1 {
         font-size: 2.1rem;
         line-height: 1.2;
+        text-wrap: balance;
+    }
+}
+
+/* Homepage hero buttons on smaller screens */
+@media (max-width: 399.98px) {
+    .hero-actions {
+        gap: 0.4rem;
+    }
+
+    .hero-actions .btn {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.9rem;
     }
 }
 
@@ -351,7 +454,7 @@ html[data-bs-theme="dark"] .project-detail-icon {
 }
 
 /* Keep long text sections full width inside the Bootstrap container */
-.project-section > p {
+.project-section>p {
     max-width: none;
 }
 
