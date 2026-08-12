@@ -86,7 +86,7 @@ html[data-bs-theme="dark"] .site-nav {
     }
 
     .site-nav .navbar-collapse .navbar-nav {
-        padding: 0.5rem 1.5rem;
+        padding: 0 1.5rem 0.5rem;
     }
 
     html[data-bs-theme="dark"] .site-nav .navbar-collapse {
@@ -676,4 +676,68 @@ html[data-bs-theme="dark"] .resume-card-icon {
 /* Keep resume metadata muted */
 .resume-page .project-media-card .project-meta {
     color: var(--bs-secondary-color);
+}
+
+/* Full-width toggle button styled to match the card sections above it */
+.additional-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    background-color: rgba(0, 0, 0, 0.025);
+    color: var(--bs-body-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+    transition: background-color 0.15s ease;
+}
+
+/* Shrink the toggle button's text/icon at narrow widths so the
+   label stays on one line instead of wrapping */
+@media (max-width: 575.98px) {
+    .additional-toggle {
+        font-size: 1rem;
+        padding: 1rem 1.25rem;
+    }
+}
+
+/* Groups the show/hide label with the chevron on the right side
+   of the toggle button */
+.additional-toggle .toggle-state {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Secondary/muted styling so the label doesn't compete with the
+   main title text for attention */
+.additional-toggle .toggle-label {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--bs-secondary-color);
+}
+
+.additional-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.055);
+    color: var(--bs-body-color);
+}
+
+html[data-bs-theme="dark"] .additional-toggle {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+html[data-bs-theme="dark"] .additional-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.09);
+}
+
+/* Chevron rotates 180° when the section is expanded */
+.additional-toggle .bi-chevron-down {
+    transition: transform 0.3s ease;
+}
+
+.additional-toggle[aria-expanded="true"] .bi-chevron-down {
+    transform: rotate(180deg);
 }

@@ -1,23 +1,13 @@
-// Handles light/dark theme switching across the site.
+// Handles the light/dark theme toggle button and its icon. The
+// initial theme itself is already set by theme-init.js in <head>
+// (before this file loads), so this file only needs to manage
+// switching it afterward.
 
-// Get the theme toggle button and icon from the page.
 const themeToggle = document.getElementById("themeToggle");
 const themeIcon = document.getElementById("themeIcon");
 
-// Get the user's saved theme, if one exists.
-const storedTheme = localStorage.getItem("theme");
-
-// Otherwise, use the user's system preference.
-const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-
-// Use saved theme first. If none exists, use system theme.
-const currentTheme = storedTheme || systemTheme;
-
-// Apply the starting theme.
-document.documentElement.setAttribute("data-bs-theme", currentTheme);
 updateIcon();
 
-// Only add the click event if the toggle exists on the page.
 if (themeToggle) {
     themeToggle.addEventListener("click", () => {
         const nowTheme = document.documentElement.getAttribute("data-bs-theme");
@@ -29,7 +19,6 @@ if (themeToggle) {
     });
 }
 
-// Update the icon based on the current theme.
 function updateIcon() {
     if (!themeIcon) return;
 
