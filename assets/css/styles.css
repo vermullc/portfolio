@@ -46,6 +46,11 @@ body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+/* Dark mode navbar top border */
+html[data-bs-theme="dark"] .site-nav {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
 /* Blur surface for the navbar. Height extends via --collapse-extra
    (set by JS) to cover the mobile dropdown when it's open, so the
    top bar and dropdown share one continuous blurred region instead
@@ -64,11 +69,6 @@ body {
 /* Dark mode navbar background */
 html[data-bs-theme="dark"] .site-nav::before {
     background: rgba(25, 25, 25, 0.72);
-}
-
-/* Dark mode navbar top border */
-html[data-bs-theme="dark"] .site-nav {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Mobile: make the expanded menu overlay page content instead of
@@ -591,15 +591,70 @@ html[data-bs-theme="dark"] .project-media-preview::after {
     justify-content: center;
 }
 
-/* Close button fixed in the top-right corner of the modal */
+/* Close button fixed in the top-right corner of the modal. Always
+   white/frosted regardless of site theme. --bs-btn-close-filter is
+   explicitly reset to none here to cancel Bootstrap's automatic
+   dark-mode icon inversion, since our background never changes. */
 .image-modal-close {
     position: fixed;
     top: 1rem;
     right: 1rem;
     z-index: 1060;
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(120, 120, 128, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     border-radius: 999px;
     padding: 0.75rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/%3e%3c/svg%3e");
+    --bs-btn-close-filter: none;
+}
+
+.modal.show .image-modal-close {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Nudge the close button up slightly on mobile so it lines up
+   with the hamburger toggle instead of poking out slightly below it */
+@media (max-width: 991.98px) {
+    .image-modal-close {
+        top: 0.9rem;
+    }
+}
+
+/* Hint badge showing the zoom interaction. Same always-white
+   frosted treatment as the close button. */
+.image-modal-hint {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1060;
+    display: flex;
+    align-items: center;
+    background-color: rgba(120, 120, 128, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    color: #ffffff;
+    ;
+    -webkit-text-stroke: 0.75px;
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show .image-modal-hint:not(.is-hidden) {
+    opacity: 1;
 }
 
 /* Default modal image view: fit image to screen height */
@@ -612,38 +667,21 @@ html[data-bs-theme="dark"] .project-media-preview::after {
     cursor: zoom-in;
 }
 
-/* Zoomed modal image view */
+/* Zoomed modal image view — actual size is set inline by JS as a
+   multiple of the image's fitted size, so it stays consistent
+   across any image aspect ratio */
 .image-modal-img.is-zoomed {
     max-width: none;
     max-height: none;
-    width: auto;
     height: auto;
     cursor: zoom-out;
 }
 
-/* Allows scrolling when the image is zoomed */
+/* Allows scrolling when the image is zoomed; alignment on each
+   axis is set dynamically by JS based on whether the zoomed
+   image actually overflows the container in that direction */
 .image-modal-body.is-zoomed {
-    align-items: flex-start;
-    justify-content: flex-start;
     overflow: auto;
-}
-
-/* Keeps zoomed modal images from becoming too extreme on mobile */
-@media (max-width: 767.98px) {
-    .image-modal-img.is-zoomed {
-        max-width: none;
-        width: 175vw;
-        height: auto;
-    }
-}
-
-/* Slightly gentler zoom for tablet-sized screens */
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .image-modal-img.is-zoomed {
-        max-width: none;
-        width: 140vw;
-        height: auto;
-    }
 }
 
 /* =========================================================
