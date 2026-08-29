@@ -43,12 +43,6 @@ body {
    rendering across Chrome, Safari, and Firefox */
 .site-nav {
     background: transparent;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* Dark mode navbar top border */
-html[data-bs-theme="dark"] .site-nav {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Blur surface for the navbar. Height extends via --collapse-extra
@@ -64,11 +58,13 @@ html[data-bs-theme="dark"] .site-nav {
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     transition: inset 0.35s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* Dark mode navbar background */
 html[data-bs-theme="dark"] .site-nav::before {
     background: rgba(25, 25, 25, 0.72);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Mobile: make the expanded menu overlay page content instead of
@@ -76,21 +72,20 @@ html[data-bs-theme="dark"] .site-nav::before {
    Background/blur are intentionally omitted here — the shared
    .site-nav::before surface above now covers this area too. */
 @media (max-width: 991.98px) {
+    .site-nav .container {
+        position: relative;
+    }
+
     .site-nav .navbar-collapse {
         position: absolute;
-        top: 100%;
+        top: calc(100% + var(--bs-navbar-padding-y, 0.5rem));
         left: 0;
         right: 0;
         z-index: 1031;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
 
     .site-nav .navbar-collapse .navbar-nav {
         padding: 0 1.5rem 0.5rem;
-    }
-
-    html[data-bs-theme="dark"] .site-nav .navbar-collapse {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 }
 

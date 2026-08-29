@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carolina Commute App Prototype | Carter Vermullen</title>
+
+    <script src="../../assets/js/theme-init.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="icon" type="image/png" href="../../assets/img/favicon/favicon.png">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+</head>
+
+<body class="project-detail-page">
+    <nav class="navbar navbar-expand-lg sticky-top site-nav">
+        <div class="container px-4">
+            <a class="navbar-brand fw-semibold" href="../../">Carter's Portfolio</a>
+
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="toggler-bar top-bar"></span>
+                <span class="toggler-bar middle-bar"></span>
+                <span class="toggler-bar bottom-bar"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../">Projects</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../resume/">Resume</a>
+                    </li>
+
+                    <li class="nav-item ms-lg-2">
+                        <div class="d-flex align-items-center gap-3">
+                            <a class="nav-link px-0 py-2" href="https://www.linkedin.com/in/carter-vermullen"
+                                target="_blank" rel="noreferrer">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+
+                            <a class="nav-link px-0 py-2" href="https://github.com/vermullc" target="_blank"
+                                rel="noreferrer">
+                                <i class="bi bi-github"></i>
+                            </a>
+
+                            <span class="nav-divider"></span>
+
+                            <a id="themeToggle" class="nav-link px-0 py-2" role="button" aria-label="Toggle theme">
+                                <i id="themeIcon" class="bi bi-moon"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <img src="assets/banner.jpg" alt="Carolina Commute App Prototype banner" class="project-hero-img"
+            style="object-position: 50% 80%;">
+    </header>
+
+    <main class="container px-4 py-4 py-lg-5">
+        <section class="project-detail-header mb-5">
+            <div class="d-flex align-items-center gap-3 mb-3">
+                <i class="bi bi-bus-front-fill project-detail-icon"
+                    style="--project-icon-color: #9E1B32; --project-icon-color-dark: #E0435A;"></i>
+
+                <h1 class="display-6 fw-semibold mb-0">Carolina Commute App Prototype</h1>
+            </div>
+
+            <p class="lead mb-3">
+                Collaborated on the design and prototyping of a conceptual campus transit app, applying human-computer
+                interaction principles through user research, task analysis, and prototyping in Figma.
+            </p>
+
+            <p class="project-meta mb-0 d-flex flex-wrap gap-3">
+                <span>
+                    <i class="bi bi-calendar-event me-1"></i>
+                    January 21, 2026 – April 20, 2026
+                </span>
+
+                <span>
+                    <i class="bi bi-book me-1"></i>
+                    Human-Computer Interaction
+                </span>
+            </p>
+        </section>
+
+        <section class="project-section">
+            <h2><i class="bi bi-card-text me-2 section-heading-icon"></i>Description</h2>
+
+            <p>
+                This project features the design of Carolina Commute, a conceptual USC-specific campus transit app
+                created with a partner, Zach Jeffcoat, for the Human-Computer Interaction (ITEC 444) course. The app was
+                designed around a specific gap in USC's existing TransLoc bus tracking system: when a bus appears
+                stopped on the map, students have no way of knowing whether it's on a driver break, delayed, or out of
+                service. Carolina Commute was designed around explicit status indicators, estimated break/delay times,
+                and favorite-route notifications, so students could make informed decisions about waiting, walking, or
+                rerouting rather than guessing. It's important to note this project is a design prototype only; no
+                backend, live data, or functional application was built. The bus positions, ETAs, and statuses seen in
+                the prototype are static mock data used to demonstrate the intended experience.
+            </p>
+
+            <p>
+                The project followed a full HCI design process from research through refinement, guided by findings from
+                the task analysis and a 15-person usability survey, as well as user stories and a user-story map
+                breaking the app down into activities, steps, and details. This research shaped a low-fidelity Figma
+                prototype focused purely on layout and functionality rather than visual design, used to test core
+                features early (bus tracking on the map, route planning, and an account and driver dashboard) and
+                confirm navigation and flow before investing in polish. That structure was then carried into a
+                high-fidelity prototype, which replaced the placeholder styling with a finished design system (a clean
+                gray background and consistent colors and typography), improved readability and information hierarchy
+                through better spacing and grouping, and adjusted certain interactions, such as changing account editing
+                from an overlay to a full screen for better usability. The high-fidelity prototype was tested with 19
+                survey participants and several in-person usability sessions, which showed strong task success rates
+                alongside specific feedback: confusion around what the ETA referred to, a need for bus stop context,
+                unclear route colors, and minor issues with the driver dashboard inputs. These findings led to a final
+                revised prototype that added a next-stop indicator to clarify ETA, a route color legend, improved driver
+                dashboard inputs, clearer navigation, and interactive notification toggles, with the goal of improving
+                clarity without overcomplicating the design.
+            </p>
+
+            <p>
+                Through this project, I strengthened my skills in user research methods, task analysis, and translating
+                usability feedback into concrete design changes, while gaining experience applying Norman's principles
+                (feedback, constraints, mapping, affordances, signifiers) and Gestalt principles (proximity, common
+                region, similarity, figure/ground) to justify specific design decisions. Working as part of a two-person
+                team throughout a full semester-long design cycle reinforced the importance of iterative testing and
+                clear division of responsibilities, and presenting our final prototype to the class alongside my partner
+                strengthened my ability to clearly explain and defend design rationale. Carolina Commute reflects my
+                ability to combine user-centered research, prototyping, and usability evaluation into a complete,
+                evidence-driven interaction design deliverable.
+            </p>
+        </section>
+
+        <section class="project-section">
+            <h2><i class="bi bi-tools me-2 section-heading-icon"></i>Skills</h2>
+
+            <div class="d-flex flex-wrap gap-2">
+                <span class="skill-pill">Collaboration</span>
+                <span class="skill-pill">Data Analysis</span>
+                <span class="skill-pill">Design Principles</span>
+                <span class="skill-pill">Figma</span>
+                <span class="skill-pill">Heuristic Evaluation</span>
+                <span class="skill-pill">High-Fidelity Prototyping</span>
+                <span class="skill-pill">Human-Computer Interaction</span>
+                <span class="skill-pill">Interaction Design</span>
+                <span class="skill-pill">Low-Fidelity Prototyping</span>
+                <span class="skill-pill">Presentation Skills</span>
+                <span class="skill-pill">Problem Solving</span>
+                <span class="skill-pill">Prototyping (Proof of Concept)</span>
+                <span class="skill-pill">Requirements Analysis</span>
+                <span class="skill-pill">Survey Design</span>
+                <span class="skill-pill">Task Analysis</span>
+                <span class="skill-pill">Usability Testing</span>
+                <span class="skill-pill">User Research</span>
+                <span class="skill-pill">User Stories & Mapping</span>
+                <span class="skill-pill">User-Centered Design</span>
+                <span class="skill-pill">Wireframing</span>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2><i class="bi bi-folder2-open me-2 section-heading-icon"></i>Project Files</h2>
+
+            <div class="row g-3 row-cols-1 row-cols-md-2">
+                <div class="col">
+                    <a href="assets/carolina-commute-final-presentation.pdf" target="_blank" rel="noreferrer"
+                        class="project-resource-link h-100">
+                        <i class="bi bi-easel"></i>
+                        <span>Carolina Commute Final Presentation.pdf</span>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a href="https://www.figma.com/design/Vr43LN7tSRlREuaRrWatjo/" target="_blank" rel="noreferrer"
+                        class="project-resource-link h-100">
+                        <i class="bi bi-vector-pen"></i>
+                        <span>Carolina Commute Figma (Design Mode)</span>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a href="https://www.figma.com/proto/Vr43LN7tSRlREuaRrWatjo/" target="_blank" rel="noreferrer"
+                        class="project-resource-link h-100">
+                        <i class="bi bi-phone"></i>
+                        <span>Carolina Commute Figma (Prototype/Presentation Mode)</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2><i class="bi bi-images me-2 section-heading-icon"></i>Screenshots</h2>
+
+            <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+                <div class="col">
+                    <article class="project-media-card">
+                        <h3>Low-Fidelity Prototype</h3>
+                        <p>
+                            Focused on layout and functionality, not visual design.
+                        </p>
+                        <img src="assets/screenshots/LFP.png" alt="Carolina Commute low-fidelity prototype"
+                            class="project-media-img">
+                    </article>
+                </div>
+
+                <div class="col">
+                    <article class="project-media-card">
+                        <h3>High-Fidelity Prototype</h3>
+                        <p>
+                            Refined interface and improved consistency.
+                        </p>
+                        <img src="assets/screenshots/HFP.png" alt="Carolina Commute high-fidelity prototype"
+                            class="project-media-img">
+                    </article>
+                </div>
+
+                <div class="col">
+                    <article class="project-media-card">
+                        <h3>Final Revision – High-Fidelity Prototype</h3>
+                        <p>
+                            Changes made post-testing based on feedback.
+                        </p>
+                        <img src="assets/screenshots/FINAL-HFP.png"
+                            alt="Carolina Commute high-fidelity prototype after final revisions"
+                            class="project-media-img">
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal fade image-modal" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen modal-dialog-centered">
+            <div class="modal-content bg-transparent border-0">
+                <button type="button" class="btn-close image-modal-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+
+                <div class="image-modal-hint" id="modalHint">
+                    <i class="bi bi-zoom-in me-2"></i>
+                    <span id="modalHintText">Click to zoom</span>
+                </div>
+
+                <div class="image-modal-body">
+                    <img id="modalImage" src="" alt="" class="image-modal-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-4 border-top">
+        <div class="container px-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
+                <small class="text-muted">
+                    © 2026 Carter Vermullen. All rights reserved. Content may not be reproduced without permission.
+                </small>
+
+                <small>
+                    <a href="../../privacy/" class="footer-link">Privacy</a>
+                </small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="../../assets/js/theme-toggle.js"></script>
+    <script src="../../assets/js/nav-blur.js"></script>
+    <script src="../../assets/js/image-modal.js"></script>
+    <script src="../../assets/js/analytics.js"></script>
+</body>
+
+</html>
